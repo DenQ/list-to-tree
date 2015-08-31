@@ -1,0 +1,27 @@
+{
+  "name": "list-to-tree",
+  "version": "0.0.0",
+  "homepage": "https://github.com/DenQ/list-to-tree",
+  "authors": [
+    "DenQ <denquick@gmail.com>"
+  ],
+  "keywords": [
+    "list",
+    "tree",
+    "convert",
+    "list",
+    "to",
+    "tree"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "lodash": "~3.10.1"
+  }
+}
