@@ -1,6 +1,6 @@
 {
   "name": "list-to-tree",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/DenQ/list-to-tree",
   "authors": [
     "DenQ <denquick@gmail.com>"
@@ -23,5 +23,7 @@
   ],
   "dependencies": {
     "lodash": "~3.10.1"
-  }
+  },
+  "description": "Convertor collection(list) to tree a structure",
+  "main": "dist/list-to-tree.js"
 }
