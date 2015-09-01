@@ -2,7 +2,10 @@
 This lib is help-tool for convertation list to tree a data structure.
 
 ## Install on bower
-bower install list-to-tree --save
+    bower install list-to-tree --save
+    
+## Install on npm
+    npm install list-to-tree --save
 
 ## Usage
 

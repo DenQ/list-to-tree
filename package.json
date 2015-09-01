@@ -1,0 +1,29 @@
+{
+  "name": "list-to-tree",
+  "version": "0.0.2",
+  "description": "List to tree data structure",
+  "main": "dist/list-to-tree.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DenQ/list-to-tree.git"
+  },
+  "keywords": [
+    "list",
+    "tree",
+    "list to tree",
+    "collection",
+    "collection to tree"
+  ],
+  "author": "DenQ <denquick@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DenQ/list-to-tree/issues"
+  },
+  "homepage": "https://github.com/DenQ/list-to-tree",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
