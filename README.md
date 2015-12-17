@@ -9,7 +9,7 @@ This lib is help-tool for convertation list to tree a data structure.
 
 ## Usage
 
-
+    var LTT = require('list-to-tree');
     var list = [
     {
         id: 1,
