@@ -9,7 +9,7 @@ This lib is help-tool for convertation list to tree a data structure.
 
 ## Usage
 
-
+    var LTT = require('list-to-tree');
     var list = [
     {
         id: 1,
@@ -53,6 +53,7 @@ This lib is help-tool for convertation list to tree a data structure.
     console.log( tree );
     
 ###Result
+
     [{
         "id": 1,
         "parent": 0,
@@ -96,3 +97,10 @@ This lib is help-tool for convertation list to tree a data structure.
         "id": 10,
         "parent": 0
     }];
+
+# Testing
+Need [Jasmine](https://github.com/jasmine/jasmine) a testing framework
+
+For run testing, typing on your console
+
+    jasmine
