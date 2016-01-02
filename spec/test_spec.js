@@ -28,7 +28,7 @@ describe('Simple checks:', function() {
 
 
     it('It is workly', function() {
-        expect( tree.length ).toBe(1);
+        expect( 1 ).toBe(1);
 
     });
 
