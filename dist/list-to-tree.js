@@ -10,6 +10,8 @@ LTT = (function() {
 
     LTT.prototype.key_parent = 'parent';
 
+    LTT.prototype.key_child = 'child';
+
     LTT.prototype.options = {};
 
     function LTT(list, options) {
@@ -27,6 +29,9 @@ LTT = (function() {
         }
         if (this.options.key_parent != null) {
             this.key_parent = this.options.key_parent;
+        }
+        if (this.options.key_child != null) {
+            this.key_child = this.options.key_child;
         }
     };
 
@@ -69,7 +74,7 @@ LTT = (function() {
                     result.push(i);
                 }
             } else {
-                obj.child = child;
+                obj[this.key_child] = child;
             }
         }
         return result;

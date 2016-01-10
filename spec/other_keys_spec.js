@@ -3,8 +3,12 @@ var LTT = require('../dist/list-to-tree.npm');
 describe('Other keys:', function() {
 
     var tree = null;
+
     var key_id = 'xid';
+
     var key_parent = 'xparent';
+
+    var key_child = 'xchild';
 
     beforeEach(function() {
         var list = [
@@ -21,7 +25,8 @@ describe('Other keys:', function() {
         ];
         var ltt = new LTT(list, {
             key_id: key_id,
-            key_parent: key_parent
+            key_parent: key_parent,
+            key_child: key_child
         });
         tree = ltt.GetTree();
     });
@@ -43,24 +48,24 @@ describe('Other keys:', function() {
     });
 
     it('First node check child', function() {
-        var child = tree[0].child;
+        var child = tree[0][key_child];
         expect( child.length ).toBe(2);
     });
 
     it('First child - check id', function() {
-        var child = tree[0].child;
+        var child = tree[0][key_child];
         var node = child[0];
         expect( node[key_id] ).toBe(2);
     });
 
     it('First child - check parent', function() {
-        var child = tree[0].child;
+        var child = tree[0][key_child];
         var node = child[0];
         expect( node[key_parent] ).toBe(1);
     });
 
     it('Child node not have a child key', function() {
-        var child = tree[0].child;
+        var child = tree[0][key_child];
         var node = child[0];
         expect( 'child' in node ).toBe(false);
     });
