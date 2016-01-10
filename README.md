@@ -52,7 +52,7 @@ This lib is help-tool for convertation list to tree a data structure.
 
     console.log( tree );
     
-###Result
+###### Result
 
     [{
         "id": 1,
@@ -66,7 +66,8 @@ This lib is help-tool for convertation list to tree a data structure.
                         "id": 4,
                         "parent": 2
                     }, {
-                        "id": 5, "parent": 2
+                        "id": 5,
+                        "parent": 2
                     }
                 ]
             },
@@ -97,6 +98,21 @@ This lib is help-tool for convertation list to tree a data structure.
         "id": 10,
         "parent": 0
     }];
+
+# Api
+    var ltt = new LTT(list, {
+        key_id: 'our id key',
+        key_parent: 'our parent key',
+        key_parent: 'out child key'
+    });
+
+If two param will not have, then:
+* key_id === 'id',
+* key_parent === 'parent'
+* key_child === 'child'
+
+You can be set names this params any words
+
 
 # Testing
 Need [Jasmine](https://github.com/jasmine/jasmine) a testing framework
