@@ -1,6 +1,6 @@
 {
   "name": "list-to-tree",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "List to tree data structure",
   "main": "dist/list-to-tree.npm.js",
   "scripts": {
@@ -16,10 +16,12 @@
     "list to tree",
     "javascript list to tree",
     "js list to tree",
-    "collection",
     "collection to tree",
     "javascript collection to tree",
-    "js collection to tree"
+    "js collection to tree",
+    "collection",
+    "jquery list to tree",
+    "jquery collection to tree"
   ],
   "author": "DenQ <denquick@gmail.com>",
   "license": "MIT",
