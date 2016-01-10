@@ -1,14 +1,8 @@
 var LTT = require('../dist/list-to-tree.npm');
 
-describe('Big tree:', function() {
+describe('Default keys:', function() {
 
     var tree = null;
-
-    var key_id = 'id';
-
-    var key_parent = 'parent';
-
-    var key_child = 'child';
 
     beforeEach(function() {
         var list = [
@@ -44,11 +38,7 @@ describe('Big tree:', function() {
                 parent: 0
             }
         ];
-        var ltt = new LTT(list, {
-            key_id: key_id,
-            key_parent: key_parent,
-            key_child: key_child
-        });
+        var ltt = new LTT(list);
         tree = ltt.GetTree();
     });
 
@@ -60,35 +50,35 @@ describe('Big tree:', function() {
 
     it('First node check id', function() {
         var firstNode = tree[0];
-        expect( firstNode[key_id] ).toBe(1);
+        expect( firstNode.id ).toBe(1);
     });
 
     it('First node check parent', function() {
         var firstNode = tree[0];
-        expect( firstNode[key_parent] ).toBe(0);
+        expect( firstNode.parent ).toBe(0);
     });
 
     it('First node check child', function() {
-        var child = tree[0][key_child];
+        var child = tree[0].child;
         expect( child.length ).toBe(2);
     });
 
     it('First child - check id', function() {
-        var child = tree[0][key_child];
+        var child = tree[0].child;
         var node = child[0];
-        expect( node[key_id] ).toBe(2);
+        expect( node.id ).toBe(2);
     });
 
     it('First child - check parent', function() {
-        var child = tree[0][key_child];
+        var child = tree[0].child;
         var node = child[0];
-        expect( node[key_parent] ).toBe(1);
+        expect( node.parent ).toBe(1);
     });
 
     it('Child node have a child key', function() {
-        var child = tree[0][key_child];
+        var child = tree[0].child;
         var node = child[0];
-        expect( key_child in node ).toBe(true);
+        expect( 'child' in node ).toBe(true);
     });
 
 });

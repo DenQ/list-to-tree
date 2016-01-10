@@ -1,6 +1,6 @@
 var LTT = require('../dist/list-to-tree.npm');
 
-describe('Simple checks:', function() {
+describe('Base usage:', function() {
 
     var tree = null;
     var key_id = 'id';
