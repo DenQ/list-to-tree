@@ -1,5 +1,6 @@
 /**
  * Created by DenQ on 31.08.2015.
+ * Repo: https://github.com/DenQ/list-to-tree
  */
 var LTT, list, ltt;
 
