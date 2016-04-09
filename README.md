@@ -103,7 +103,7 @@ This lib is help-tool for convertation list to tree a data structure.
     var ltt = new LTT(list, {
         key_id: 'our id key',
         key_parent: 'our parent key',
-        key_parent: 'out child key'
+        key_child: 'our child key'
     });
 
 If two param will not have, then:
