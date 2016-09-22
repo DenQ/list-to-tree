@@ -20,8 +20,8 @@ LTT = (function() {
         this.list = list;
         this.options = options != null ? options : {};
         this.ParseOptions();
-        this.list = _.map(_.orderBy(this.list, [this.key_parent, this.key_id], ['asc', 'asc']));
-        this.groupParent = _.uniq(_.map(this.list, this.key_parent));
+        this.list = _.map(_.sortByOrder(this.list, [this.key_parent, this.key_id], ['asc', 'asc']));
+        this.groupParent = _.uniq(_.pluck(this.list, this.key_parent));
         return this;
     }
 
