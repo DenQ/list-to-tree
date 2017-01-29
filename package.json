@@ -1,6 +1,6 @@
 {
   "name": "list-to-tree",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "description": "List to tree data structure",
   "main": "dist/list-to-tree.npm.js",
   "scripts": {
@@ -28,8 +28,5 @@
   "bugs": {
     "url": "https://github.com/DenQ/list-to-tree/issues"
   },
-  "homepage": "https://github.com/DenQ/list-to-tree",
-  "dependencies": {
-    "lodash": "^3.10.1"
-  }
+  "homepage": "https://github.com/DenQ/list-to-tree"
 }

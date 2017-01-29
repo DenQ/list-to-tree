@@ -4,6 +4,34 @@
  */
 var LTT, list, ltt;
 
+function pluck(collection, key) {
+    return collection.map(function(item) {
+        return item[key];
+    });
+}
+
+function unique(collection) {
+    return collection.filter(function(value, index, array) {
+        return array.indexOf(value) === index;
+    });
+}
+
+function sortBy(collection, propertyA, propertyB) {
+    return collection.sort(function(a, b) {
+        if (a[propertyB] < b[propertyB]) {
+            if (a[propertyA] > b[propertyA]) {
+                return 1;
+            }
+            return -1;
+        } else {
+            if (a[propertyA] < b[propertyA]) {
+                return -1;
+            }
+            return 1;
+        }
+    });
+};
+
 LTT = (function() {
     LTT.prototype.groupParent = [];
 
@@ -19,21 +47,18 @@ LTT = (function() {
         this.list = list;
         this.options = options != null ? options : {};
         this.ParseOptions();
-        this.list = _.map(_.sortByOrder(this.list, [this.key_parent, this.key_id], ['asc', 'asc']));
-        this.groupParent = _.uniq(_.pluck(this.list, this.key_parent));
+        this.list = sortBy(this.list, this.key_parent, this.key_id);
+        this.groupParent = unique(pluck(this.list, this.key_parent));
         return this;
     }
 
     LTT.prototype.ParseOptions = function() {
-        if (this.options.key_id != null) {
-            this.key_id = this.options.key_id;
-        }
-        if (this.options.key_parent != null) {
-            this.key_parent = this.options.key_parent;
-        }
-        if (this.options.key_child != null) {
-            this.key_child = this.options.key_child;
-        }
+        var that = this;
+        ['key_id', 'key_parent', 'key_child'].forEach(function(item) {
+            if (typeof  that.options[item] !== 'undefined') {
+                that[item] = that.options[item];
+            }
+        });
     };
 
     LTT.prototype.GetParentItems = function(parent) {
