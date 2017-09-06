@@ -32,5 +32,8 @@
   "homepage": "https://github.com/DenQ/list-to-tree",
   "devDependencies": {
     "jasmine": "^2.8.0"
+  },
+  "dependencies": {
+    "@denq/iron-tree": "^1.0.0"
   }
 }
