@@ -4,7 +4,8 @@
   "description": "List to tree data structure",
   "main": "dist/list-to-tree.npm.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "performance": "node bin/performance.js"
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,8 @@
   "bugs": {
     "url": "https://github.com/DenQ/list-to-tree/issues"
   },
-  "homepage": "https://github.com/DenQ/list-to-tree"
+  "homepage": "https://github.com/DenQ/list-to-tree",
+  "devDependencies": {
+    "jasmine": "^2.8.0"
+  }
 }
