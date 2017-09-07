@@ -1,5 +1,4 @@
-// var LTT = require('../dist/list-to-tree.npm');
-const LTT = require('../dist/list-to-tree-new');
+const LTT = require('../dist/list-to-tree');
 
 describe('Default keys:', function() {
 

@@ -1,8 +1,8 @@
 {
   "name": "list-to-tree",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "List to tree data structure",
-  "main": "dist/list-to-tree.npm.js",
+  "main": "index.js",
   "scripts": {
     "test": "jasmine",
     "performance": "node bin/performance.js"
