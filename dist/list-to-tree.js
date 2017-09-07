@@ -1,4 +1,5 @@
 const IronTree = require('@denq/iron-tree');
+
 const defaultOptions = {
   key_id: 'id' ,
   key_parent: 'parent' ,
@@ -40,6 +41,10 @@ module.exports = class LTT{
     });
 
     this.tree = tree;
+  }
+
+  sort(criteria) {
+    this.tree.sort(criteria);
   }
 
   GetTree() {
