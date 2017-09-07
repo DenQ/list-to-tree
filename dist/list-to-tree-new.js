@@ -7,46 +7,31 @@ const defaultOptions = {
   empty_children: false,
 };
 
-// function sortBy(propertyA, propertyB) {
-//   return function(a, b) {
-//     if (a.get(propertyB) < b.get(propertyB)) {
-//       if (a.get(propertyA) > b.get(propertyA)) {
-//         return 1;
-//       }
-//       return -1;
-//     } else {
-//       if (a.get(propertyA) < b.get(propertyA)) {
-//         return -1;
-//       }
-//       return 1;
-//     }
-//   };
-// };
 function sortBy(collection, propertyA, propertyB) {
-    return collection.sort(function(a, b) {
-        if (a[propertyB] < b[propertyB]) {
-            if (a[propertyA] > b[propertyA]) {
-                return 1;
-            }
-            return -1;
-        } else {
-            if (a[propertyA] < b[propertyA]) {
-                return -1;
-            }
-            return 1;
-        }
-    });
+  return collection.sort(function(a, b) {
+    if (a[propertyB] < b[propertyB]) {
+      if (a[propertyA] > b[propertyA]) {
+        return 1;
+      }
+      return -1;
+    } else {
+      if (a[propertyA] < b[propertyA]) {
+        return -1;
+      }
+      return 1;
+    }
+  });
 };
 
 module.exports = class LTT{
 
   constructor(list, options = {}) {
-    options = Object.assign(options, defaultOptions);
+    options = Object.assign({}, defaultOptions, options);
     this.options = options;
     const { key_id, key_parent } = options;
 
-    const tree = new IronTree({ [key_id]: 0 });
     sortBy(list, key_parent, key_id);
+    const tree = new IronTree({ [key_id]: 0 });
     list.forEach((item, index) => {
       tree.add((parentNode) => {
         return parentNode.get(key_id) === item[key_parent];
@@ -60,7 +45,7 @@ module.exports = class LTT{
     const { key_child, empty_children } = this.options;
     return this.tree.toJson({
       key_children: key_child,
-      empty_children,
+      empty_children: false,
     })[key_child];
   }
 
