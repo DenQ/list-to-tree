@@ -1,4 +1,4 @@
-var LTT = require('../dist/list-to-tree.npm');
+const LTT = require('../dist/list-to-tree-new');
 
 describe('Base usage:', function() {
 
@@ -28,7 +28,7 @@ describe('Base usage:', function() {
 
 
     it('It is workly', function() {
-        expect( tree.length ).toBe(1);
+      expect( tree.length ).toBe(1);
 
     });
 

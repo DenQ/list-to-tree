@@ -1,4 +1,5 @@
-var LTT = require('../dist/list-to-tree.npm');
+// var LTT = require('../dist/list-to-tree.npm');
+const LTT = require('../dist/list-to-tree-new');
 
 describe('Default keys:', function() {
 
@@ -45,7 +46,6 @@ describe('Default keys:', function() {
 
 
     it('It is workly', function() {
-        console.log( tree );
         expect( tree.length ).toBe(4);
 
     });

@@ -13,7 +13,7 @@ function performanceCalc(fn, ...params) {
     console.log(`Result: ${result}. Execution Time: ${end - start} ms`)
 }
 
-const list = (new Array(1000))
+const list = (new Array(20000))
   .fill()
   .map((item, index) => {
     return {
@@ -40,7 +40,10 @@ function runIronTree() {
       return parentNode.get('id') === item.parent;
     }, item);
   });
-  const jTree = tree.toJson();
+  const jTree = tree.toJson({
+    empty_children: false,
+  });
+  // console.log(jTree.children);
   return 'iron-tree'
 }
 
