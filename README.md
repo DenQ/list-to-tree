@@ -9,7 +9,7 @@ This lib is help-tool for convertation list to tree a data structure.
     npm install list-to-tree --save
 
 ## Usage
-
+```js
     var LTT = require('list-to-tree');
     var list = [
     {
@@ -52,7 +52,7 @@ This lib is help-tool for convertation list to tree a data structure.
     var tree = ltt.GetTree();
 
     console.log( tree );
-
+```
 ###### Result
 
     [{
@@ -122,7 +122,7 @@ This lib is help-tool for convertation list to tree a data structure.
 * **.sort(callback)** The custom sort method
   * callback(a, b) - a and b have `IronTree\Node` type and have methods: add, remove, get, set, sort, traversal, etc...
   * example:
-    ```
+    ```js
     function compareById(vector) {
       return (a, b) => {
         const aid = Number(a.get('id'));
