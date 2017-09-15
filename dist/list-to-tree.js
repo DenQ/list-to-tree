@@ -17,8 +17,9 @@ module.exports = class LTT{
     options = Object.assign({}, defaultOptions, options);
     this.options = options;
 
+    // this.split(_list);
     const tree = this.buildTree(_list);
-    
+
     this.tree = tree;
   }
 
@@ -40,17 +41,19 @@ module.exports = class LTT{
   }
 
   split(list) {
-    list.sort(compareById(true, 'parent'));
-    const rootParentId = list[0].parent;
+    const { key_id, key_parent } = this.options;
+
+    list.sort(compareById(true, key_parent));
+    const rootParentId = list[0][key_parent];
 
     const collection = [];
     list.forEach((item) => {
-      if (item.parent === rootParentId) {
+      if (item[key_parent] === rootParentId) {
         collection.push([item]);
       } else {
         collection.forEach((el) => {
           el.forEach((child) => {
-            if (child.id === item.parent) {
+            if (child[key_id] === item[key_parent]) {
               el.push(item);
             }
           });
