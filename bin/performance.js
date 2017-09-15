@@ -1,8 +1,9 @@
+"use strict"
 const LTT = require('../dist/old/list-to-tree.npm.js');
 const LTT1 = require('../dist/list-to-tree.js');
 const IronTree = require('@denq/iron-tree');
 
-const LENGTH = 20000;
+const LENGTH = 25000;
 
 function getList() {
 
@@ -29,8 +30,12 @@ function performanceCalc(fn, ...params) {
   console.log(`Result: ${result}. Execution Time: ${end - start} ms`)
 }
 
+const list = getList();
+const xlist = list.map(item => Object.assign({}, item));
+
 function runListToTree() {
-  var ltt = new LTT(getList(), {
+  // const _list = Array(list.length).fill().map((item, index) => list[index]);
+  var ltt = new LTT(xlist, {
     key_id: 'id',
     key_parent: 'parent',
     key_child: 'children',
@@ -41,7 +46,7 @@ function runListToTree() {
 
 function runIronTree() {
   const tree = new IronTree({ id: 0 });
-  getList().forEach((item, index) => {
+  list.forEach((item, index) => {
     tree.add((parentNode) => {
       return parentNode.get('id') === item.parent;
     }, item);
@@ -53,10 +58,11 @@ function runIronTree() {
 }
 
 function runNewListToTree() {
-  const ltt = new LTT1(getList(), {
+  const ltt = new LTT1(list, {
     key_id: 'id',
     key_parent: 'parent',
     key_child: 'children',
+    many_items: true,
   });
   var tree = ltt.GetTree();
   return 'new list-to-tree';

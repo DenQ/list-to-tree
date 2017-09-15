@@ -1,5 +1,5 @@
 const IronTree = require('@denq/iron-tree');
-const sortBy  = require('../utils/sort-by');
+const sortBy = require('../utils/sort-by');
 const compareById = require('../utils/compare-by-id');
 
 const defaultOptions = {
@@ -7,6 +7,7 @@ const defaultOptions = {
   key_parent: 'parent' ,
   key_child: 'child',
   empty_children: false,
+  many_items: false,
 };
 
 module.exports = class LTT{
@@ -17,13 +18,17 @@ module.exports = class LTT{
     options = Object.assign({}, defaultOptions, options);
     this.options = options;
 
-    // this.split(_list);
-    const tree = this.buildTree(_list);
-
-    this.tree = tree;
+    if (options.many_items) {
+      const collections = this.split(_list);
+      this.tree = collections.map((item) => {
+        return this.buildTreeFromList(item);
+      });
+    } else {
+      this.tree = this.buildTreeFromList(_list);
+    }
   }
 
-  buildTree(list) {
+  buildTreeFromList(list) {
     const { key_id, key_parent } = this.options;
 
     sortBy(list, key_parent, key_id);
@@ -37,7 +42,23 @@ module.exports = class LTT{
   }
 
   sort(criteria) {
-    this.tree.sort(criteria);
+    const { many_items } = this.options;
+    if (many_items) {
+      this.tree.forEach((item) => {
+        item.sort(criteria);
+      });
+      //hack
+      this.tree = this.tree.map((item) => {
+        const id = item.rootNode.children[0].get('id')
+        item.set('id', id);
+        item.set('xid', id);
+        return item;
+      });
+      this.tree.sort(criteria);
+      // end hack
+    } else {
+      this.tree.sort(criteria);
+    }
   }
 
   split(list) {
@@ -65,11 +86,18 @@ module.exports = class LTT{
   }
 
   GetTree() {
-    const { key_child, empty_children } = this.options;
-    return this.tree.toJson({
-      key_children: key_child,
-      empty_children: false,
-    })[key_child];
+    const { key_child, empty_children, many_items } = this.options;
+    if (many_items) {
+      const trees = this.tree.map((item) => {
+        return item.toJson(this.options).children[0];
+      });
+      return [].concat(...trees);
+    } else {
+      return this.tree.toJson({
+        key_children: key_child,
+        empty_children: false,
+      })[key_child];
+    }
   }
 
 }
