@@ -23,6 +23,20 @@ function sortBy(collection, propertyA, propertyB) {
   });
 };
 
+function compareById(vector) {
+  return (a, b) => {
+    const aid = Number(a.parent);
+    const bid = Number(b.parent);
+    if (aid > bid) {
+      return vector ? 1 : -1;
+    } else if (aid < bid) {
+      return vector ? -1 : 1;
+    } else {
+      return 0
+    }
+  };
+}
+
 module.exports = class LTT{
 
   constructor(list, options = {}) {
@@ -45,6 +59,28 @@ module.exports = class LTT{
 
   sort(criteria) {
     this.tree.sort(criteria);
+  }
+
+  split(list) {
+    list.sort(compareById(true));
+    const rootParentId = list[0].parent;
+
+    const collection = [];
+    list.forEach((item) => {
+      if (item.parent === rootParentId) {
+        collection.push([item]);
+      } else {
+        collection.forEach((el) => {
+          el.forEach((child) => {
+            if (child.id === item.parent) {
+              el.push(item);
+            }
+          });
+        });
+
+      }
+    });
+    return collection;
   }
 
   GetTree() {
