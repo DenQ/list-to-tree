@@ -1,4 +1,6 @@
 const IronTree = require('@denq/iron-tree');
+const sortBy  = require('../utils/sort-by');
+const compareById = require('../utils/compare-by-id');
 
 const defaultOptions = {
   key_id: 'id' ,
@@ -6,36 +8,6 @@ const defaultOptions = {
   key_child: 'child',
   empty_children: false,
 };
-
-function sortBy(collection, propertyA, propertyB) {
-  return collection.sort(function(a, b) {
-    if (a[propertyB] < b[propertyB]) {
-      if (a[propertyA] > b[propertyA]) {
-        return 1;
-      }
-      return -1;
-    } else {
-      if (a[propertyA] < b[propertyA]) {
-        return -1;
-      }
-      return 1;
-    }
-  });
-};
-
-function compareById(vector) {
-  return (a, b) => {
-    const aid = Number(a.parent);
-    const bid = Number(b.parent);
-    if (aid > bid) {
-      return vector ? 1 : -1;
-    } else if (aid < bid) {
-      return vector ? -1 : 1;
-    } else {
-      return 0
-    }
-  };
-}
 
 module.exports = class LTT{
 
@@ -62,7 +34,7 @@ module.exports = class LTT{
   }
 
   split(list) {
-    list.sort(compareById(true));
+    list.sort(compareById(true, 'parent'));
     const rootParentId = list[0].parent;
 
     const collection = [];
