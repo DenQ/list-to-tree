@@ -16,17 +16,23 @@ module.exports = class LTT{
 
     options = Object.assign({}, defaultOptions, options);
     this.options = options;
-    const { key_id, key_parent } = options;
 
-    sortBy(_list, key_parent, key_id);
+    const tree = this.buildTree(_list);
+    
+    this.tree = tree;
+  }
+
+  buildTree(list) {
+    const { key_id, key_parent } = this.options;
+
+    sortBy(list, key_parent, key_id);
     const tree = new IronTree({ [key_id]: 0 });
-    _list.forEach((item, index) => {
+    list.forEach((item, index) => {
       tree.add((parentNode) => {
         return parentNode.get(key_id) === item[key_parent];
       }, item);
     });
-
-    this.tree = tree;
+    return tree;
   }
 
   sort(criteria) {
