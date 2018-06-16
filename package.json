@@ -1,6 +1,6 @@
 {
   "name": "list-to-tree",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "List to tree data structure",
   "main": "index.js",
   "scripts": {
