@@ -51,7 +51,7 @@ module.exports = class LTT{
     const { key_child, empty_children } = this.options;
     return this.tree.toJson({
       key_children: key_child,
-      empty_children: false,
+      empty_children
     })[key_child];
   }
 
