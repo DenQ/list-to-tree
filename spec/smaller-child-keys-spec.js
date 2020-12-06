@@ -1,6 +1,6 @@
 const LTT = require('../dist/list-to-tree');
 
-describe('Big tree:', function() {
+describe('Smaller child keys:', function() {
 
     var tree = null;
 
@@ -16,32 +16,32 @@ describe('Big tree:', function() {
                 id: 1,
                 parent: 0
             }, {
-                id: 2,
+                id: 20,
                 parent: 1
             }, {
-                id: 3,
+                id: 30,
                 parent: 1
             }, {
-                id: 4,
-                parent: 2
+                id: 14,
+                parent: 20
             }, {
-                id: 5,
-                parent: 2
+                id: 15,
+                parent: 20
             }, {
                 id: 6,
-                parent: 0
+                parent: 14
             }, {
                 id: 7,
-                parent: 0
+                parent: 14
             }, {
                 id: 8,
-                parent: 7
+                parent: 15
             }, {
                 id: 9,
-                parent: 8
+                parent: 15
             }, {
                 id: 10,
-                parent: 0
+                parent: 15
             }
         ];
         var ltt = new LTT(list, {
@@ -54,7 +54,7 @@ describe('Big tree:', function() {
 
 
     it('It is workly', function() {
-        expect( tree.length ).toBe(4);
+        expect( tree.length ).toBe(1);
     });
 
     it('First node check id', function() {
@@ -72,22 +72,25 @@ describe('Big tree:', function() {
         expect( child.length ).toBe(2);
     });
 
-    it('First child - check id', function() {
-        var child = tree[0][key_child];
-        var node = child[0];
-        expect( node[key_id] ).toBe(2);
-    });
-
-    it('First child - check parent', function() {
-        var child = tree[0][key_child];
-        var node = child[0];
-        expect( node[key_parent] ).toBe(1);
-    });
-
     it('Child node have a child key', function() {
         var child = tree[0][key_child];
         var node = child[0];
+        expect( node[key_id] ).toBe(20);
+        expect( node[key_parent] ).toBe(1);
         expect( key_child in node ).toBe(true);
     });
 
+    it('3rd depth child node have a child key', function() {
+        var node = tree[0][key_child][0][key_child][0];
+        expect( node[key_id] ).toBe(14);
+        expect( node[key_parent] ).toBe(20);
+        expect( key_child in node ).toBe(true);
+    });
+
+    it('4th depth child node exists', function() {
+        var node = tree[0][key_child][0][key_child][0][key_child][0];
+        expect( node[key_id] ).toBe(6);
+        expect( node[key_parent] ).toBe(14);
+        expect( key_child in node ).toBe(false);
+    });
 });
