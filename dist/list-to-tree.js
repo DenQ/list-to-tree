@@ -27,7 +27,8 @@ function writeDepth(parentKeyName, keyName, remainingList, currentDepth = 0, par
       nextRemainingList.push(item)
     }
   })
-  if(remainingList.length === nextRemainingList.length) throw Error(`Invalid list: ${JSON.stringify(remainingList)}`)
+  // if invalid list exists, the process is over
+  if(remainingList.length === nextRemainingList.length) return;
   writeDepth(parentKeyName, keyName, nextRemainingList, currentDepth + 1, nextParentIds)
 };
 
