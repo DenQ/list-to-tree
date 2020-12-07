@@ -15,7 +15,7 @@ function sortBy(collection, propertyA, propertyB, propertyC) {
   });
 };
 
-function writeDepth(collection, parentKeyName, keyName, remainingList, currentDepth = 0, parentIds = [0]) {
+function writeDepth(parentKeyName, keyName, remainingList, currentDepth = 0, parentIds = [0]) {
   if (remainingList.length === 0) return;
   const nextParentIds = []
   const nextRemainingList = []
@@ -27,8 +27,8 @@ function writeDepth(collection, parentKeyName, keyName, remainingList, currentDe
       nextRemainingList.push(item)
     }
   })
-  if(remainingList.length === nextRemainingList.length) throw Error(`Invalid node: ${JSON.stringify(remainingList)}`)
-  writeDepth(collection, parentKeyName, keyName, nextRemainingList, currentDepth + 1, nextParentIds)
+  if(remainingList.length === nextRemainingList.length) throw Error(`Invalid list: ${JSON.stringify(remainingList)}`)
+  writeDepth(parentKeyName, keyName, nextRemainingList, currentDepth + 1, nextParentIds)
 };
 
 module.exports = class LTT{
@@ -40,7 +40,7 @@ module.exports = class LTT{
     this.options = options;
     const { key_id, key_parent } = options;
 
-    writeDepth(_list, key_parent, key_id, _list)
+    writeDepth(key_parent, key_id, _list)
     sortBy(_list, depthKeyName, key_parent, key_id);
 
     const tree = new IronTree({ [key_id]: 0 });
