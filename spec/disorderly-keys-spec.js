@@ -1,6 +1,6 @@
 const LTT = require('../dist/list-to-tree');
 
-describe('Default keys:', function() {
+describe('Disorderly keys:', function() {
 
     var tree = null;
 
