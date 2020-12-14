@@ -16,7 +16,7 @@ function compareById(vector) {
   };
 }
 
-describe('Big tree:', function() {
+describe('Sort:', function() {
 
     var tree = null;
     var list = [];

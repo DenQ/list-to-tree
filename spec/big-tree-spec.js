@@ -55,7 +55,6 @@ describe('Big tree:', function() {
 
     it('It is workly', function() {
         expect( tree.length ).toBe(4);
-
     });
 
     it('First node check id', function() {
