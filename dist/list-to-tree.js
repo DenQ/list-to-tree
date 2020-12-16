@@ -36,6 +36,7 @@ module.exports = class LTT{
 
   constructor(list, options = {}) {
     const _list = list.map((item) => item);
+    _list.map(item=>item.parent=item.parent||0)
 
     options = Object.assign({}, defaultOptions, options);
     this.options = options;
