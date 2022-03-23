@@ -2,9 +2,10 @@
 # yarn lockfile v1
 
 
-"@denq/iron-tree@^1.3.1":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@denq/iron-tree/-/iron-tree-1.3.1.tgz#335ddb15088bf27ae26509ade6067fc5a3298b41"
+"@denq/iron-tree@^1.3.3":
+  version "1.3.3"
+  resolved "https://registry.yarnpkg.com/@denq/iron-tree/-/iron-tree-1.3.3.tgz#9c4cbde975f7a728702e8138b618a6bfc416dc85"
+  integrity sha512-cnem4EfvcwXzt+p4y3dBJTCUH1lAYgWG0JJywola0HlEj8fh+SBKrdNuvej1TC4Z0VUmDOdD5hEoM4tkiHRgXg==
 
 balanced-match@^1.0.0:
   version "1.0.0"
