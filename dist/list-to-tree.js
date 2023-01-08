@@ -5,6 +5,7 @@ const defaultOptions = {
   key_parent: 'parent' ,
   key_child: 'child',
   empty_children: false,
+  root_id: 0
 };
 
 const depthKeyName = '__depth'
@@ -39,12 +40,12 @@ module.exports = class LTT{
 
     options = Object.assign({}, defaultOptions, options);
     this.options = options;
-    const { key_id, key_parent } = options;
+    const { key_id, key_parent , root_id} = options;
 
     writeDepth(key_parent, key_id, _list)
     sortBy(_list, depthKeyName, key_parent, key_id);
 
-    const tree = new IronTree({ [key_id]: 0 });
+    const tree = new IronTree({ [key_id]: root_id });
     _list.forEach((item, index) => {
       tree.add((parentNode) => {
         return parentNode.get(key_id) === item[key_parent];
